@@ -1,7 +1,7 @@
-package com.usa.ciclo3.reto3.services;
+package com.usa.ciclo3.reto3.Services;
 
-import com.usa.ciclo3.reto3.model.Cabin;
-import com.usa.ciclo3.reto3.repository.CabinRepository;
+import com.usa.ciclo3.reto3.Model.Cabin;
+import com.usa.ciclo3.reto3.Repository.CabinRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +14,8 @@ public class CabinServices {
     @Autowired
     private CabinRepository cabinRepository;
 
-    public List<Cabin> getAll(){
-
-        return cabinRepository.getAll();
+    public List<Cabin> getAllCabin(){
+        return cabinRepository.getAllCabin();
     }
 
     public Optional<Cabin> getCabin(int id) {

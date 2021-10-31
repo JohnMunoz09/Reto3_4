@@ -1,10 +1,10 @@
-package com.usa.ciclo3.reto3.web;
+package com.usa.ciclo3.reto3.Controller;
 
 import java.util.List;
 import java.util.Optional;
 
-import com.usa.ciclo3.reto3.model.Cabin;
-import com.usa.ciclo3.reto3.services.CabinServices;
+import com.usa.ciclo3.reto3.Model.Client;
+import com.usa.ciclo3.reto3.Services.ClientServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,45 +20,47 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/Cabin")
+@RequestMapping("/api/Client")
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 
-public class CabinControllerWeb {
+public class ClientController {
 
     @Autowired
-    private CabinServices cabinServices;
+    private ClientServices clientServices;
 
     @GetMapping("/all")
-    public List<Cabin> getCabin(){
-
-        return cabinServices.getAll();
+    public List<Client> getClients(){
+        return clientServices.getAll();
     }
 
-    @GetMapping("/{idCabin}")
-    public Optional<Cabin> getCabin (@PathVariable("id") int id) {
+    @GetMapping("/{id}")
+    public Optional<Client> getClient(@PathVariable("id") int idClient) {
 
-        return cabinServices.getCabin(id);
+        return clientServices.getClient(idClient);
     }
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Cabin save(@RequestBody Cabin cabin) {
+    public Client save(@RequestBody Client client) {
 
-        return cabinServices.save(cabin);
+        return clientServices.save(client);
     }
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
+    public Client update(@RequestBody Client client) {
 
-    public Cabin update(@RequestBody Cabin cabin) {
-
-        return cabinServices.update(cabin);
+        return clientServices.update(client);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{idClient}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean delete(@PathVariable("id") int id) {
-        return cabinServices.deleteCabin(id);
+
+    public boolean delete(@PathVariable("idClient") int idClient) {
+
+        return clientServices.deleteClient(idClient);
     }
+
 
 
 }
+

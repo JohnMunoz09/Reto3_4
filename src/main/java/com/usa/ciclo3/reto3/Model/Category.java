@@ -1,4 +1,4 @@
-package com.usa.ciclo3.reto3.model;
+package com.usa.ciclo3.reto3.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;

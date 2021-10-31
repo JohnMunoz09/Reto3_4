@@ -1,7 +1,7 @@
-package com.usa.ciclo3.reto3.services;
+package com.usa.ciclo3.reto3.Services;
 
-import com.usa.ciclo3.reto3.model.Client;
-import com.usa.ciclo3.reto3.repository.ClientRepository;
+import com.usa.ciclo3.reto3.Model.Client;
+import com.usa.ciclo3.reto3.Repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

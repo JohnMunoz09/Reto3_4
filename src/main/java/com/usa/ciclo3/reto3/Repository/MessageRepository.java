@@ -1,7 +1,7 @@
-package com.usa.ciclo3.reto3.repository;
+package com.usa.ciclo3.reto3.Repository;
 
-import com.usa.ciclo3.reto3.crudrepository.MessageCrudRepository;
-import com.usa.ciclo3.reto3.model.Message;
+import com.usa.ciclo3.reto3.Interface.InterfaceMessage;
+import com.usa.ciclo3.reto3.Model.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -12,7 +12,7 @@ import java.util.Optional;
 public class MessageRepository {
 
         @Autowired
-        private MessageCrudRepository messageCrudRepository;
+        private InterfaceMessage messageCrudRepository;
 
         public List<Message> getAll(){
 

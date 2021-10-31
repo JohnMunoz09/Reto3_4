@@ -1,9 +1,9 @@
-package com.usa.ciclo3.reto3.repository;
+package com.usa.ciclo3.reto3.Repository;
 import java.util.List;
 import java.util.Optional;
 
-import com.usa.ciclo3.reto3.crudrepository.CabinCrudRepository;
-import com.usa.ciclo3.reto3.model.Cabin;
+import com.usa.ciclo3.reto3.Interface.InterfaceCabin;
+import com.usa.ciclo3.reto3.Model.Cabin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 /**
@@ -14,10 +14,9 @@ import org.springframework.stereotype.Repository;
 public class CabinRepository {
 
         @Autowired
-        private CabinCrudRepository cabinCrudRepository;
+        private InterfaceCabin cabinCrudRepository;
 
-        public List<Cabin> getAll(){
-
+        public List<Cabin> getAllCabin(){
             return (List<Cabin>) cabinCrudRepository.findAll();
         }
 

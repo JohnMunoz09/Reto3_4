@@ -1,7 +1,7 @@
-package com.usa.ciclo3.reto3.repository;
+package com.usa.ciclo3.reto3.Repository;
 
-import com.usa.ciclo3.reto3.crudrepository.ReservationsCrudRepository;
-import com.usa.ciclo3.reto3.model.Reservation;
+import com.usa.ciclo3.reto3.Interface.InterfaceReservation;
+import com.usa.ciclo3.reto3.Model.Reservation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -12,7 +12,7 @@ import java.util.Optional;
 public class ReservationRepository {
 
         @Autowired
-        private ReservationsCrudRepository reservationsCrudRepository;
+        private InterfaceReservation reservationsCrudRepository;
 
         public List<Reservation> getAll(){
 

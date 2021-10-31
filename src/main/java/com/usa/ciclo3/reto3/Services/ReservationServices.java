@@ -1,8 +1,7 @@
-package com.usa.ciclo3.reto3.services;
+package com.usa.ciclo3.reto3.Services;
 
-import com.usa.ciclo3.reto3.model.Cabin;
-import com.usa.ciclo3.reto3.model.Reservation;
-import com.usa.ciclo3.reto3.repository.ReservationRepository;
+import com.usa.ciclo3.reto3.Model.Reservation;
+import com.usa.ciclo3.reto3.Repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
