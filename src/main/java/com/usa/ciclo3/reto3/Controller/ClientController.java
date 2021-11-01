@@ -30,7 +30,7 @@ public class ClientController {
 
     @GetMapping("/all")
     public List<Client> getClients(){
-        return clientServices.getAll();
+        return clientServices.getAllClient();
     }
 
     @GetMapping("/{id}")

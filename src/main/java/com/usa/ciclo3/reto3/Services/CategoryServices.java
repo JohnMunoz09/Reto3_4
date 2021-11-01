@@ -15,9 +15,9 @@ public class CategoryServices {
     @Autowired
     private CategoryRepository categoryRepository;
 
-    public List<Category> getAll() {
+    public List<Category> getAllCategory() {
 
-        return categoryRepository.getAll();
+        return categoryRepository.getAllCategory();
     }
 
     public Optional<Category> getCategory(int id) {

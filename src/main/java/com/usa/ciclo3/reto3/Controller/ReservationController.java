@@ -34,7 +34,7 @@ public class ReservationController {
     @GetMapping("/all")
     public List<Reservation> getReservation(){
 
-        return reservationServices.getAll();
+        return reservationServices.getAllReservation();
     }
 
     @GetMapping("/{id}")

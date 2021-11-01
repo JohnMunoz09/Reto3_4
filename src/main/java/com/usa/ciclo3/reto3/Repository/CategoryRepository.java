@@ -15,7 +15,7 @@ public class CategoryRepository {
     @Autowired
     private InterfaceCategory interfaceCategory;
 
-    public List<Category> getAll(){
+    public List<Category> getAllCategory(){
         return (List<Category>) interfaceCategory.findAll();
     }
 

@@ -60,5 +60,4 @@ public class CabinController {
         return cabinServices.deleteCabin(id);
     }
 
-
 }

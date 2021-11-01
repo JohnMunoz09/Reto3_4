@@ -12,23 +12,22 @@ import java.util.Optional;
 public class ReservationRepository {
 
         @Autowired
-        private InterfaceReservation reservationsCrudRepository;
+        private InterfaceReservation interfaceReservation;
 
-        public List<Reservation> getAll(){
-
-            return (List<Reservation>) reservationsCrudRepository.findAll();
+        public List<Reservation> getAllReservation(){
+            return (List<Reservation>) interfaceReservation.findAll();
         }
+
         public Optional<Reservation> getReservation(int idReservation){
-
-            return reservationsCrudRepository.findById(idReservation);
+            return interfaceReservation.findById(idReservation);
         }
+
         public Reservation save(Reservation reservation){
-
-            return reservationsCrudRepository.save(reservation);
+            return interfaceReservation.save(reservation);
         }
-        public void delete(Reservation reservation){
 
-            reservationsCrudRepository.delete(reservation);
+        public void delete(Reservation reservation){
+            interfaceReservation.delete(reservation);
         }
 
 

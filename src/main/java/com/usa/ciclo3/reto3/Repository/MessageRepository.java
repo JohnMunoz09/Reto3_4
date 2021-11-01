@@ -12,24 +12,22 @@ import java.util.Optional;
 public class MessageRepository {
 
         @Autowired
-        private InterfaceMessage messageCrudRepository;
+        private InterfaceMessage interfaceMessage;
 
-        public List<Message> getAll(){
-
-            return (List<Message>) messageCrudRepository.findAll();
+        public List<Message> getAllMessage(){
+            return (List<Message>) interfaceMessage.findAll();
         }
-        public Optional<Message> getMessage(int id){
 
-            return messageCrudRepository.findById(id);
+        public Optional<Message> getMessage(int id){
+            return interfaceMessage.findById(id);
         }
 
         public Message save(Message message){
-
-            return messageCrudRepository.save(message);
+            return interfaceMessage.save(message);
         }
-        public void delete(Message message){
 
-            messageCrudRepository.delete(message);
+        public void delete(Message message){
+            interfaceMessage.delete(message);
         }
 }
 

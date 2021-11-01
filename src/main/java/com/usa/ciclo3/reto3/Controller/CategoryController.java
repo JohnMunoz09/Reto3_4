@@ -29,8 +29,7 @@ public class CategoryController {
     private CategoryServices categoryServices;
     @GetMapping("/all")
     public List<Category> getCategory(){
-
-        return categoryServices.getAll();
+        return categoryServices.getAllCategory();
     }
 
     @GetMapping("/{id}")
@@ -41,24 +40,20 @@ public class CategoryController {
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public Category save(@RequestBody Category category) {
-
         return categoryServices.save(category);
     }
+
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public Category update(@RequestBody Category category) {
-
         return categoryServices.update(category);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int id) {
-
         return categoryServices.deleteCategory(id);
     }
-
-
 }
 
 
