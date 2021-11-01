@@ -19,7 +19,6 @@ public class CabinServices {
     }
 
     public Optional<Cabin> getCabin(int id) {
-
         return cabinRepository.getCabin(id);
     }
 

@@ -14,24 +14,22 @@ import org.springframework.stereotype.Repository;
 public class CabinRepository {
 
         @Autowired
-        private InterfaceCabin cabinCrudRepository;
+        private InterfaceCabin interfaceCabin;
 
         public List<Cabin> getAllCabin(){
-            return (List<Cabin>) cabinCrudRepository.findAll();
+            return (List<Cabin>) interfaceCabin.findAll();
         }
 
         public Optional<Cabin> getCabin(int id){
-
-            return cabinCrudRepository.findById(id);
+            return interfaceCabin.findById(id);
         }
 
         public Cabin save(Cabin cabin){
-
-            return cabinCrudRepository.save(cabin);
+            return interfaceCabin.save(cabin);
         }
-        public void delete(Cabin cabin){
 
-            cabinCrudRepository.delete(cabin);
+        public void delete(Cabin cabin){
+            interfaceCabin.delete(cabin);
         }
 
     }

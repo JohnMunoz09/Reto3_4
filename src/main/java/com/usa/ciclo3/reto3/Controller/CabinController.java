@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/Cabin")
+@RequestMapping("api/Cabin")
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 
 public class CabinController {
@@ -30,7 +30,6 @@ public class CabinController {
 
     @GetMapping("/all")
     public List<Cabin> getCabin(){
-
         return cabinServices.getAllCabin();
     }
 
@@ -46,11 +45,10 @@ public class CabinController {
 
         return cabinServices.save(cabin);
     }
+
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-
     public Cabin update(@RequestBody Cabin cabin) {
-
         return cabinServices.update(cabin);
     }
 
