@@ -23,7 +23,7 @@ public class ScoreController {
     }
 
     @GetMapping("/{idScore}")
-    public Optional<Score> getScore(@PathVariable("id") int id){
+    public Optional<Score> getScore(@PathVariable("idScore") int id){
         return scoreServices.getScore(id);
     }
 

@@ -34,9 +34,8 @@ public class CabinController {
     }
 
     @GetMapping("/{idCabin}")
-    public Optional<Cabin> getCabin (@PathVariable("id") int id) {
-
-        return cabinServices.getCabin(id);
+    public Optional<Cabin> getCabin (@PathVariable("idCabin") int idCabin) {
+        return cabinServices.getCabin(idCabin);
     }
 
     @PostMapping("/save")

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "reservations")
@@ -65,11 +66,11 @@ public class Reservation implements Serializable {
                 this.client = client;
         }
 
-        public String getScore() {
+        public List<Score>getScore() {
                 return score;
         }
 
-        public void setScore(String score) {
+        public void setScore(List<Score> score) {
                 this.score = score;
         }
 
@@ -83,7 +84,9 @@ public class Reservation implements Serializable {
         @JsonIgnoreProperties({"reservations","messages"})
         private Client client;
 
-        private String score;
+        @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "reservation")
+        @JsonIgnoreProperties({"reservation", "score"})
+        private List<Score> score;
 
 
 

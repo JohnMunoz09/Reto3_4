@@ -3,6 +3,8 @@ package com.usa.ciclo3.reto3.Controller;
 import java.util.List;
 import java.util.Optional;
 
+import com.usa.ciclo3.reto3.Model.Custom.CountClient;
+import com.usa.ciclo3.reto3.Model.Custom.StatusReservation;
 import com.usa.ciclo3.reto3.Model.Reservation;
 import com.usa.ciclo3.reto3.Services.ReservationServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,8 +46,7 @@ public class ReservationController {
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public Reservation save(@RequestBody Reservation reservation) {
-        return
-                reservationServices.save(reservation);
+        return reservationServices.save(reservation);
     }
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
@@ -56,9 +57,21 @@ public class ReservationController {
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int idReservation) {
-        return
-                reservationServices.deleteReservation(idReservation);
+        return reservationServices.deleteReservation(idReservation);
     }
 
+    @GetMapping("/report-status")
+    public StatusReservation getReservationStatus(){
+        return reservationServices.getStatusReport();
+    }
+
+    @GetMapping("/report-clients")
+    public List<CountClient> getCountClient(){
+        return reservationServices.getTopClient();
+    }
+    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
+    public List<Reservation> getReservationPeriod(@PathVariable("dateOne") String dateOne,@PathVariable("dateTwo") String dateTwo){
+        return reservationServices.getReservationPeriod(dateOne,dateTwo);
+    }
 }
 

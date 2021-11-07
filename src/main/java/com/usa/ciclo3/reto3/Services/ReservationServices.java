@@ -1,10 +1,16 @@
 package com.usa.ciclo3.reto3.Services;
 
+import com.usa.ciclo3.reto3.Model.Custom.CountClient;
+import com.usa.ciclo3.reto3.Model.Custom.StatusReservation;
 import com.usa.ciclo3.reto3.Model.Reservation;
 import com.usa.ciclo3.reto3.Repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -69,4 +75,35 @@ public class ReservationServices {
         return aBoolean;
     }
 
-}
+
+    public  List<CountClient> getTopClient(){
+        return reservationRepository.getTopClient();
+    }
+
+    public StatusReservation getStatusReport(){
+        List<Reservation> completed = reservationRepository.getReservationByStatus("completed");
+        List<Reservation> cancelled = reservationRepository.getReservationByStatus("cancelled");
+
+        return new StatusReservation(completed.size(),cancelled.size());
+    }
+
+    public List<Reservation> getReservationPeriod(String date1,String date2) {
+
+        SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");
+        Date dateOne = new Date();
+        Date dateTwo = new Date();
+        try {
+            dateOne = parser.parse(date1);
+            dateTwo = parser.parse(date2);
+        } catch (ParseException error) {
+            error.printStackTrace();
+        }
+
+        if (dateOne.before(dateTwo)) {
+            return reservationRepository.getReservationPeriod(dateOne, dateTwo);
+        } else {
+            return new ArrayList<>();
+
+        }
+    }
+ }

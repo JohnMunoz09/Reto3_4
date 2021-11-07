@@ -56,7 +56,7 @@ CREATE TABLE message(
                         PRIMARY KEY(id),
 
 
-                        FOREIGN KEY (cabin)
+                          FOREIGN KEY (cabin)
                             REFERENCES cabin(id),
                         FOREIGN KEY (client)
                             REFERENCES client(id)
