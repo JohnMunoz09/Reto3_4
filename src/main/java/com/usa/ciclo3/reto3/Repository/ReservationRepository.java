@@ -2,7 +2,7 @@ package com.usa.ciclo3.reto3.Repository;
 
 import com.usa.ciclo3.reto3.Interface.InterfaceReservation;
 import com.usa.ciclo3.reto3.Model.Client;
-import com.usa.ciclo3.reto3.Model.Custom.CountClient;
+import com.usa.ciclo3.reto3.Custom.CountClient;
 import com.usa.ciclo3.reto3.Model.Reservation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

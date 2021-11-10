@@ -1,7 +1,7 @@
 package com.usa.ciclo3.reto3.Services;
 
-import com.usa.ciclo3.reto3.Model.Custom.CountClient;
-import com.usa.ciclo3.reto3.Model.Custom.StatusReservation;
+import com.usa.ciclo3.reto3.Custom.CountClient;
+import com.usa.ciclo3.reto3.Custom.StatusReservation;
 import com.usa.ciclo3.reto3.Model.Reservation;
 import com.usa.ciclo3.reto3.Repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,21 +14,39 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * @Autor John Muñoz
+ */
+
 @Service
 public class ReservationServices {
-
+    /**
+     * Objeto ReservationRepository
+     */
     @Autowired
-
     private ReservationRepository reservationRepository;
 
-    public List<Reservation> getAllReservation() {
+    /**
+     * Metodo que obtiene todos los resultados de la reservacion
+     */
+     public List<Reservation> getAllReservation() {
         return reservationRepository.getAllReservation();
     }
 
+    /**
+     * Metodo que obtiene reservacion buscada por id
+     * @param idReservation
+     * @return
+     */
     public Optional<Reservation> getReservation(int idReservation) {
         return reservationRepository.getReservation(idReservation);
     }
 
+    /**
+     * Metodo que registra la reservacion
+     * @param reservation que permite cargar datos
+     * @return
+     */
     public Reservation save(Reservation reservation) {
         if (reservation.getIdReservation() == null) {
             return reservationRepository.save(reservation);
@@ -39,25 +57,29 @@ public class ReservationServices {
             } else {
                 return reservation;
             }
-
         }
     }
 
+    /**
+     * Metodo que sirve para actualizar registros
+     * @param reservation Parametro que permite obtener valores de reservacion
+     * @return
+     */
     public Reservation update(Reservation reservation) {
         if (reservation.getIdReservation() != null) {
-            Optional<Reservation> e = reservationRepository.getReservation(reservation.getIdReservation());
-            if (!e.isEmpty()) {
+            Optional<Reservation> revision = reservationRepository.getReservation(reservation.getIdReservation());
+            if (!revision.isEmpty()) {
                 if (reservation.getStartDate() != null) {
-                    e.get().setStartDate(reservation.getStartDate());
+                    revision.get().setStartDate(reservation.getStartDate());
                 }
                 if (reservation.getDevolutionDate() != null) {
-                    e.get().setDevolutionDate(reservation.getDevolutionDate());
+                    revision.get().setDevolutionDate(reservation.getDevolutionDate());
                 }
                 if (reservation.getStatus() != null) {
-                    e.get().setStatus(reservation.getStatus());
+                    revision.get().setStatus(reservation.getStatus());
                 }
-                reservationRepository.save(e.get());
-                return e.get();
+                reservationRepository.save(revision.get());
+                return revision.get();
 
             } else {
                 return reservation;
@@ -67,6 +89,11 @@ public class ReservationServices {
         }
     }
 
+    /**
+     * Metodo que perite eliminar registros
+     * @param idReservation parametro id
+     * @return
+     */
     public boolean deleteReservation(int idReservation) {
         Boolean aBoolean = getReservation(idReservation).map(reservation -> {
             reservationRepository.delete(reservation);
@@ -75,11 +102,18 @@ public class ReservationServices {
         return aBoolean;
     }
 
-
+    /**
+     * Metodo que hace el conteo de clientes por reservacion
+     * @return retorna los clientes
+     */
     public  List<CountClient> getTopClient(){
         return reservationRepository.getTopClient();
     }
 
+    /**
+     * Metodo que cuenta la cantidad de estado de reservacion
+     * @return retorna cantidad de reservaciones completadas y canceladas
+     */
     public StatusReservation getStatusReport(){
         List<Reservation> completed = reservationRepository.getReservationByStatus("completed");
         List<Reservation> cancelled = reservationRepository.getReservationByStatus("cancelled");
@@ -87,6 +121,12 @@ public class ReservationServices {
         return new StatusReservation(completed.size(),cancelled.size());
     }
 
+    /**
+     * Metodo que obtiene  las reservacion entre un periodo y otro
+     * @param date1 parametro de la fecha mas lejana
+     * @param date2 parametro de la fecha mas cercana
+     * @return listado de reservas dentro un periodo
+     */
     public List<Reservation> getReservationPeriod(String date1,String date2) {
 
         SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");

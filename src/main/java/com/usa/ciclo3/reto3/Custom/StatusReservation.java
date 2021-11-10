@@ -1,4 +1,4 @@
-package com.usa.ciclo3.reto3.Model.Custom;
+package com.usa.ciclo3.reto3.Custom;
 
 public class StatusReservation {
 

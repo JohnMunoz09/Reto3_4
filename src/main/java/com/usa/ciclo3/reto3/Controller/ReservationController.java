@@ -3,8 +3,8 @@ package com.usa.ciclo3.reto3.Controller;
 import java.util.List;
 import java.util.Optional;
 
-import com.usa.ciclo3.reto3.Model.Custom.CountClient;
-import com.usa.ciclo3.reto3.Model.Custom.StatusReservation;
+import com.usa.ciclo3.reto3.Custom.CountClient;
+import com.usa.ciclo3.reto3.Custom.StatusReservation;
 import com.usa.ciclo3.reto3.Model.Reservation;
 import com.usa.ciclo3.reto3.Services.ReservationServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,14 +28,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/Reservation")
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
-
 public class ReservationController {
 
     @Autowired
     private ReservationServices reservationServices;
     @GetMapping("/all")
     public List<Reservation> getReservation(){
-
         return reservationServices.getAllReservation();
     }
 
@@ -69,6 +67,7 @@ public class ReservationController {
     public List<CountClient> getCountClient(){
         return reservationServices.getTopClient();
     }
+
     @GetMapping("/report-dates/{dateOne}/{dateTwo}")
     public List<Reservation> getReservationPeriod(@PathVariable("dateOne") String dateOne,@PathVariable("dateTwo") String dateTwo){
         return reservationServices.getReservationPeriod(dateOne,dateTwo);

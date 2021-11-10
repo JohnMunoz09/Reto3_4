@@ -9,11 +9,12 @@ import java.util.List;
 
 public interface InterfaceReservation extends CrudRepository<Reservation, Integer> {
 
-    @Query("SELECT r.client, COUNT(r.client) FROM Reservation  AS r GROUP BY r.client order by COUNT(r.client)DESC")
+
     public List<Reservation> findAllByStartDateAfterAndAndStartDateBefore(Date dateOne, Date dateTwo);
 
     public List<Reservation> findAllByStatus(String status);
 
+    @Query("SELECT r.client, COUNT(r.client) FROM Reservation  AS r GROUP BY r.client order by COUNT(r.client)DESC")
     public List<Object[]> countReservationByClient();
 
 }
