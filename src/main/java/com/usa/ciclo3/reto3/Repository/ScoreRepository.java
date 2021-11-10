@@ -10,7 +10,6 @@ import java.util.Optional;
 
 @Repository
 public class ScoreRepository {
-
     @Autowired
     private InterfaceScore interfaceScore;
 
